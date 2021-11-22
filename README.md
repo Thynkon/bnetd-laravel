@@ -20,7 +20,6 @@
 *** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
 *** https://www.markdownguide.org/basic-syntax/#reference-style-links
 -->
-[![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
@@ -195,13 +194,11 @@ Project Link: [https://github.com/Thynkon/fs-sharing](https://github.com/Thynkon
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Thynkon/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/Thynkon/fs-sharing/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/Thynkon/repo.svg?style=for-the-badge
+[forks-shield]: https://img.shields.io/github/forks/Thynkon/fs-sharing
 [forks-url]: https://github.com/Thynkon/fs-sharing/network/members
-[stars-shield]: https://img.shields.io/github/stars/Nomeos/repo.svg?style=for-the-badge
+[stars-shield]: https://img.shields.io/github/stars/Thynkon/fs-sharing
 [stars-url]: https://github.com/Thynkon/fs-sharing/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Nomeos/repo.svg?style=for-the-badge
+[issues-shield]: https://img.shields.io/github/issues/Thynkon/fs-sharing
 [issues-url]: https://github.com/Thynkon/fs-sharing/issues
-[license-shield]: https://img.shields.io/github/license/Nomeos/repo.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/Thynkon/fs-sharing
 [license-url]: https://github.com/Thynkon/fs-sharing/blob/master/LICENSE
