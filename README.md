@@ -100,9 +100,33 @@ Here's a blank template to get started:
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
-#### [NixOS](https://nixos.org/)
+#### Dependencies
+- [NixOS](https://nixos.org/)
+  ```sh
+  nix-shell shell.nix
+  ```
+  
+#### Database
+Open a shell that creates a connection to mongodb:
 ```sh
-nix-shell shell.nix
+mongo
+```
+Create the database:
+```
+use bnetd
+```
+
+And create the user that should connect to the database created above.
+```
+db.createUser(
+  {
+    user: "bnetd",
+    pwd: "<YOUR PASSWORD>",
+    roles: [
+       { role: "readWrite", db: "bnetd" }
+    ]
+  }
+
 ```
 
 ### Installation
@@ -113,8 +137,8 @@ nix-shell shell.nix
    ```
 2. Install php packages
    ```sh
-   $ cd bnetd
-   $ composer install
+   cd bnetd
+   composer install
    ```
 
 4. Setup database connection
