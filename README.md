@@ -29,22 +29,20 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Thynkon/fs-sharing">
-    <img src="public/assets/img/logo.png" alt="Logo" width="80" height="80">
+  <a href="https://github.com/Thynkon/bnetd">
+    <img src="public/img/logo.svg" alt="Logo" width="80" height="80">
   </a>
-
-<h3 align="center">FS sharing</h3>
 
   <p align="center">
     <br />
     <a href="./doc"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Thynkon/fs-sharing">View Demo</a>
+    <a href="https://github.com/Thynkon/bnetd">View Demo</a>
     ·
-    <a href="https://github.com/Thynkon/fs-sharing/issues">Report Bug</a>
+    <a href="https://github.com/Thynkon/bnetd/issues">Report Bug</a>
     ·
-    <a href="https://github.com/Thynkon/fs-sharing/issues">Request Feature</a>
+    <a href="https://github.com/Thynkon/bnetd/issues">Request Feature</a>
   </p>
 </p>
 
@@ -102,32 +100,25 @@ Here's a blank template to get started:
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
-#### [Composer](https://getcomposer.org/)
-- Archlinux
-    ```sh
-    sudo pacman -S composer
-    ```
-
-- NixOS
-    ```sh
-    nix-shell shell.nix
-    ```
+#### [NixOS](https://nixos.org/)
+```sh
+nix-shell shell.nix
+```
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   $ git clone https://github.com/Thynkon/fs-sharing.git
+   $ git clone https://github.com/Thynkon/bnetd.git
    ```
 2. Install php packages
    ```sh
-   $ cd fs-sharing
+   $ cd bnetd
    $ composer install
    ```
 
 4. Setup database connection
-   This projects uses PDO as the database connector. In order to connect to a database, you must
-   set your database credentials in **.env**.
+   This projects uses a mongo database. In order to connect to a database, you must set your database credentials in **.env**.
    ```dotenv
     DB_CONNECTION=mongodb
     MONGO_DB_HOST=127.0.0.1
@@ -155,13 +146,13 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 If you have added a feature and you want to test if everything is ok, you can run the unit tests we wrote
 by typing the following:
 ```sh
-$ composer test
+composer test
 ```
 
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/Thynkon/fs-sharing/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Thynkon/bnetd/issues) for a list of proposed features (and known issues).
 
 ## Documentation
 
@@ -190,15 +181,15 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
 
-Project Link: [https://github.com/Thynkon/fs-sharing](https://github.com/Thynkon/fs-sharing)
+Project Link: [https://github.com/Thynkon/bnetd](https://github.com/Thynkon/bnetd)
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[forks-shield]: https://img.shields.io/github/forks/Thynkon/fs-sharing
-[forks-url]: https://github.com/Thynkon/fs-sharing/network/members
-[stars-shield]: https://img.shields.io/github/stars/Thynkon/fs-sharing
-[stars-url]: https://github.com/Thynkon/fs-sharing/stargazers
-[issues-shield]: https://img.shields.io/github/issues/Thynkon/fs-sharing
-[issues-url]: https://github.com/Thynkon/fs-sharing/issues
-[license-shield]: https://img.shields.io/github/license/Thynkon/fs-sharing
-[license-url]: https://github.com/Thynkon/fs-sharing/blob/master/LICENSE
+[forks-shield]: https://img.shields.io/github/forks/Thynkon/bnetd
+[forks-url]: https://github.com/Thynkon/bnetd/network/members
+[stars-shield]: https://img.shields.io/github/stars/Thynkon/bnetd
+[stars-url]: https://github.com/Thynkon/bnetd/stargazers
+[issues-shield]: https://img.shields.io/github/issues/Thynkon/bnetd
+[issues-url]: https://github.com/Thynkon/bnetd/issues
+[license-shield]: https://img.shields.io/github/license/Thynkon/bnetd
+[license-url]: https://github.com/Thynkon/bnetd/blob/master/LICENSE
