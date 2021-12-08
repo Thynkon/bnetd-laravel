@@ -30,7 +30,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Thynkon/bnetd">
-    <img src="public/img/logo.svg" alt="Logo" width="80" height="80">
+    <img src="storage/app/public/img/logo.svg" alt="Logo" width="80" height="80">
   </a>
 
   <p align="center">
