@@ -508,6 +508,7 @@ Homestead.json
 /vendor
 .env
 /public/.htaccess
-/storage
+/public/storage/*
+/public/css/*
+/public/js/*
 storage/*.key
-
