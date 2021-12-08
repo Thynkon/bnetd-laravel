@@ -497,4 +497,7 @@ storage/*.key
 Homestead.yaml
 Homestead.json
 /.vagrant
+/public/storage/*
+/public/css/*
+/public/js/*
 .phpunit.result.cache
