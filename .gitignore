@@ -475,11 +475,6 @@ composer.lock
 
 node_modules/
 
-.env*
-.phpunit.result.cache
-public/assets/css/*
-
-
 /vendor/
 node_modules/
 npm-debug.log
@@ -503,12 +498,3 @@ Homestead.yaml
 Homestead.json
 /.vagrant
 .phpunit.result.cache
-
-#Laravel Specific files
-/vendor
-.env
-/public/.htaccess
-/public/storage/*
-/public/css/*
-/public/js/*
-storage/*.key
