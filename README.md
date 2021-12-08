@@ -133,7 +133,7 @@ db.createUser(
 
 1. Clone the repo
    ```sh
-   $ git clone https://github.com/Thynkon/bnetd.git
+   git clone https://github.com/Thynkon/bnetd.git
    ```
 2. Install php packages
    ```sh
@@ -141,7 +141,18 @@ db.createUser(
    composer install
    ```
 
-4. Setup database connection
+3. Install npm dependencies
+    ```sh
+    npm install
+    ```
+
+4. Build assets
+    ```sh
+    npm run dev
+    npm run watch
+    ```
+
+5. Setup database connection
    This projects uses a mongo database. In order to connect to a database, you must set your database credentials in **.env**.
    ```dotenv
     DB_CONNECTION=mongodb
@@ -153,7 +164,7 @@ db.createUser(
     DB_AUTHENTICATION_DATABASE=<DATABASE_NAME>
    ```
 
-5. Populate the database
+6. Populate the database
    ```sh
    php artisan migrate:fresh --seed
    ```
