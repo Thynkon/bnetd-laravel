@@ -18,7 +18,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 22,
                 'jail' => 'ssh',
                 'username' => 'root',
@@ -27,7 +27,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 22,
                 'jail' => 'ssh',
                 'username' => 'nginx',
@@ -36,7 +36,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 22,
                 'jail' => 'ssh',
                 'username' => 'nextcloud',
@@ -45,7 +45,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 22,
                 'jail' => 'ssh',
                 'username' => 'pi',
@@ -54,7 +54,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 22,
                 'jail' => 'ssh',
                 'username' => 'ubuntu-user',
@@ -65,7 +65,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nextcloud',
                 'uri' => '/',
@@ -76,7 +76,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nextcloud',
                 'uri' => '/toto.html',
@@ -87,7 +87,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nextcloud',
                 'uri' => '/register',
@@ -98,7 +98,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nextcloud',
                 'uri' => '/.git',
@@ -109,7 +109,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nextcloud',
                 'uri' => '/.env',
@@ -122,7 +122,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nginx-badbots',
                 'uri' => '/index.php?s=/Index/\x5Cthink\x5Capp/invokefunction&function=call_user_func_array&vars[0]=md5&vars[1][]=HelloThinkPHP21',
@@ -133,7 +133,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nginx-badbots',
                 'uri' => '/index.php?s=/Index/\x5Cthink\x5Capp/invokefunction&function=call_user_func_array&vars[0]=md5&vars[1][]=HelloThinkPHP21',
@@ -144,7 +144,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nginx-badbots',
                 'uri' => '/index.php',
@@ -157,7 +157,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nginx-noproxy',
                 'uri' => '/cgi-bin/.%2e/.%2e/.%2e/.%2e/bin/sh',
@@ -168,7 +168,7 @@ class ConnectionLogSeeder extends Seeder
         ConnectionLog::insert(
             [
                 'ip' => long2ip(rand(0, 4294967295)),
-                'timestamp' => time(),
+                'ts' => time(),
                 'port' => 443,
                 'jail' => 'nginx-noproxy',
                 'uri' => '/redirect?host=124.5.1.2',
