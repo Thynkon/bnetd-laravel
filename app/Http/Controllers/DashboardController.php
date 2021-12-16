@@ -28,17 +28,17 @@ class DashboardController extends Controller
         foreach ($ips as $ip) {
             if ($location = Location::get($ip)) {
                     // If country isn't already set, add it
-                    if (!$stats->contains(function($key, $value) use ($location) {
-                        return $key["country"] == $location->countryName;
+                    if (!$stats->contains(function($stat) use ($location) {
+                        return $stat["country"] == $location->countryName;
                     })) {
                         $stats[] = ["country" => $location->countryName, "ban_count" => 1];
                     } else {
                         // Update ban_count
-                        $stats->transform(function($item) use ($location) {
-                            if ($item["country"] == $location->countryName) {
-                                $item["ban_count"] += 1;
+                        $stats->transform(function($stat) use ($location) {
+                            if ($stat["country"] == $location->countryName) {
+                                $stat["ban_count"] += 1;
                             }
-                            return $item;
+                            return $stat;
                         });
                     }
             } else {
