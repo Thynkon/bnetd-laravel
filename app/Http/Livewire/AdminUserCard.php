@@ -5,13 +5,13 @@ namespace App\Http\Livewire;
 use App\Models\User;
 use Livewire\Component;
 
-class DashboardUserCard extends Component
+class AdminUserCard extends Component
 {
     public $user;
 
     public function render()
     {
-        return view('livewire.dashboard-user-card');
+        return view('livewire.admin-user-card');
     }
 
     public function block()
