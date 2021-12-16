@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
                 'nickname'  => 'Thynkon',
                 'email'     => 'thynkon@protonmail.com',
                 'password'  => Hash::make('mariopw'),
+                'active'    => true,
             ],
             [   // Noah
                 'firstname' => 'Noah',
@@ -29,13 +30,15 @@ class UserSeeder extends Seeder
                 'nickname'  => 'Tortuda',
                 'email'     => 'noah.delgado@cpnv.ch',
                 'password'  => Hash::make('noahpw'),
+                'active'    => true,
             ],
             [   // Armand
                 'firstname' => 'Armand',
                 'lastname'  => 'Marechal',
                 'nickname'  => 'Penfu',
-                'email'     => 'sypenfu@gmail.com',
+                'email'     => 'armand.marechal@cpnv.ch',
                 'password'  => Hash::make('armandpw'),
+                'active'    => true,
             ],
         ]);
     }

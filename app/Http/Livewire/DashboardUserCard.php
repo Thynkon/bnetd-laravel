@@ -16,12 +16,13 @@ class DashboardUserCard extends Component
 
     public function block()
     {
-        $this->user->update(['blocked' => true]);
+        $this->user->active = !$this->user->active;
+        $this->user->save();
     }
 
     public function remove()
     {
         $this->user->delete();
-        $this->emit('userRemoved');
+        $this->emitUp('userRemoved');
     }
 }
