@@ -14,6 +14,6 @@ class NicProtocolTrafficSeeder extends Seeder
      */
     public function run()
     {
-        NicProtocolTraffic::factory()->count(1000)->create();
+        NicProtocolTraffic::factory()->count(50000)->create();
     }
 }

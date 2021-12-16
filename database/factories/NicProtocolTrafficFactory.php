@@ -19,7 +19,7 @@ class NicProtocolTrafficFactory extends Factory
         return [
             'ip' => long2ip(rand(0, 4294967295)),
             'pkt_len' => $this->faker->numberBetween(1, 2048), // from 1 to 2kb
-            'ts' => time(),
+            'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
             'port' => $this->faker->randomElement($ports),
             'iface' => $nic,
         ];

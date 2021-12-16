@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             ConnectionLogSeeder::class,
             NicProtocolTrafficSeeder::class,
+            NicGlobalTrafficSeeder::class,
         ]);
     }
 }
