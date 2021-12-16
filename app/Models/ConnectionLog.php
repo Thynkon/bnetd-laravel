@@ -10,6 +10,7 @@ class ConnectionLog extends Model
     use HasFactory;
 
     protected $table = "connection_logs";
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -23,4 +24,9 @@ class ConnectionLog extends Model
         'jail',
         'username',
     ];
+
+    public static function byJail(string $jail)
+    {
+        return ConnectionLog::where('jail', $jail);
+    }
 }
