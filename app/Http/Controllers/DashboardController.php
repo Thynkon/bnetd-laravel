@@ -22,6 +22,7 @@ class DashboardController extends Controller
             $jails[$jail_name]['ban_count'] = ConnectionLog::byJail($jail_name)->count();
         }
 
+/*
         $ips = ConnectionLog::all('ip')->pluck('ip');
         $stats = collect();
         $location = null;
@@ -45,6 +46,40 @@ class DashboardController extends Controller
             }
         }
         $stats = collect($stats)->sortBy(callback: 'ban_count', descending: true);
+*/
+
+        // This is a temporary solution to solve performance issues. This will be solved by performing requests
+        // using threads (laravel queues)
+        $stats = [
+            [
+                "country" => "United States",
+                "ban_count"=> 5
+            ],
+            [
+                "country" => "China",
+                "ban_count"=> 3
+            ],
+            [
+                "country" => "Canada",
+                "ban_count"=> 2
+            ],
+            [
+                "country" => "South Korea",
+                "ban_count"=> 1
+            ],
+            [
+                "country" => "Singapore",
+                "ban_count"=> 1
+            ],
+            [
+                "country" => "France",
+                "ban_count"=> 1
+            ],
+            [
+                "country" => "Tanzania",
+                "ban_count"=> 1
+            ],
+        ];
 
         return view('dashboard')->with([
             'jails' => $jails,
