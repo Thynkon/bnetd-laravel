@@ -3,57 +3,6 @@
         width="100" height="50"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const nt = JSON.parse(document.getElementById('myChart').dataset.test);
-
-        console.log(nt);
-
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                datasets: [{
-                    label: 'Network Traffic',
-                    data: nt,
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(context) {
-                                return new Intl.NumberFormat('en', {
-                                    style: 'unit',
-                                    notation: 'compact',
-                                    unit: 'gigabyte',
-                                }).format(context.parsed.y);
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    </script>
+    <script src="{{ asset('js/formatBytes.js') }}"></script>
+    <script src="{{ asset('js/custom_chart.js') }}"></script>
 </div>
