@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\NicGlobalTraffic;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class NetworkTraffics extends Component
@@ -12,15 +13,13 @@ class NetworkTraffics extends Component
 
     public function mount()
     {
-        $_networkTraffics = NicGlobalTraffic::updatedSince(1)->orderBy('ts', 'asc')->get();
-        $date = Carbon::today()->subDays(1);
+        $networkTraffics = NicGlobalTraffic::updatedSince(1)->get()->groupBy(function ($item) {
+            return Carbon::parse($item['ts'])->hour;
+        });
 
         for ($i = 0; $i < 24; $i++) {
-            $_date = $date->addHour($i);
-            $this->networkTraffics[$i] = $_networkTraffics->whereBetween('ts', [$_date->getTimestamp(), $_date->addHour()->getTimestamp()])->pluck('rx')->sum;
+            $this->networkTraffics[$i . "h"] = isset($networkTraffics[$i]) ? intdiv(intdiv($networkTraffics[$i]->sum('rx'), 1024), 1024) : 0;
         }
-
-        dd($this->networkTraffics);
     }
 
     public function render()

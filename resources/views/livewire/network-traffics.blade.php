@@ -1,5 +1,6 @@
 <div class="w-full">
-    <canvas data-test="<?= htmlspecialchars(json_encode($networkTraffics), ENT_QUOTES, 'UTF-8') ?>" id="myChart" width="100" height="50"></canvas>
+    <canvas data-test="<?= htmlspecialchars(json_encode($networkTraffics), ENT_QUOTES, 'UTF-8') ?>" id="myChart"
+        width="100" height="50"></canvas>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -37,6 +38,19 @@
                 scales: {
                     y: {
                         beginAtZero: true
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return new Intl.NumberFormat('en', {
+                                    style: 'unit',
+                                    notation: 'compact',
+                                    unit: 'gigabyte',
+                                }).format(context.parsed.y);
+                            }
+                        }
                     }
                 }
             }
