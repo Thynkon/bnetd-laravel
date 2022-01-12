@@ -1,6 +1,6 @@
 [nginx-noproxy]
 enabled  = true
-port     = http,https
+port     = 80,443
 filter   = nginx-noproxy
 logpath  = /var/log/nginx/access.log
 maxretry = 2

@@ -1,7 +1,5 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
-adsf
 <div class="flex flex-col">
-
   <div class="bg-white">
     <div>
       <!--
@@ -214,9 +212,11 @@ adsf
 
           <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
             <!-- Filters -->
-            <form class="hidden lg:block">
+            <form class="hidden lg:block" action="{{ route('bans.filter') }}" method="post">
 
-              <x-filter/>
+              <x-filter title="Jails" :options="$options"/>
+
+              @csrf
 
               <button class="px-2 py-1 mt-4 sm:tp-6 lg:mt-8 bg-gray-800 hover:bg-gray-900 rounded text-sm text-gray-50 w-full h-10">Apply</button>
             </form>

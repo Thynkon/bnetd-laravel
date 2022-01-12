@@ -32,7 +32,7 @@ class ConnectionLogSeeder extends Seeder
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
                                 'port' => 22,
-                                'jail' => 'ssh',
+                                'jail' => 'sshd',
                                 'username' => 'root',
                         ]
                 );
@@ -42,7 +42,7 @@ class ConnectionLogSeeder extends Seeder
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
                                 'port' => 22,
-                                'jail' => 'ssh',
+                                'jail' => 'sshd',
                                 'username' => 'nginx',
                         ]
                 );
@@ -50,7 +50,7 @@ class ConnectionLogSeeder extends Seeder
                         'ip' => $this->faker->ipv4(),
                         'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
                         'port' => 22,
-                        'jail' => 'ssh',
+                        'jail' => 'sshd',
                         'username' => 'nextcloud',
                 ]);
                 ConnectionLog::insert(
@@ -58,7 +58,7 @@ class ConnectionLogSeeder extends Seeder
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
                                 'port' => 22,
-                                'jail' => 'ssh',
+                                'jail' => 'sshd',
                                 'username' => 'pi',
                         ]
                 );
@@ -67,7 +67,7 @@ class ConnectionLogSeeder extends Seeder
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
                                 'port' => 22,
-                                'jail' => 'ssh',
+                                'jail' => 'sshd',
                                 'username' => 'ubuntu-user',
                         ]
                 );

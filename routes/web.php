@@ -41,6 +41,8 @@ Route::middleware(['auth'])->group(function () {
         return $controller->callAction('sort', [$param, $t]);
 
     })->name('bans.sort');
+
+    Route::post('/bans/filter', [BanController::class, 'filter'])->name('bans.filter');
 });
 
 require __DIR__ . '/auth.php';

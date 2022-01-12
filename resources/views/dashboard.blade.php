@@ -1,10 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="py-8">
             <h2 class="text-2xl mb-4">{{ __('Jails') }}</h2>
@@ -16,7 +10,7 @@
         </div>
 
         <div class="py-8">
-            <h2 class="text-2xl mb-4">{{ __('Contries with most bans') }}</h2>
+            <h2 class="text-2xl mb-4">{{ __('Countries with most bans') }}</h2>
             <div class="grid grid-cols-3 gap-4">
                 @foreach ($stats as $stat)
                     <x-country-stat :stat="$stat" />
