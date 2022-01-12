@@ -1,6 +1,6 @@
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -20,6 +20,10 @@
                     </x-nav-link>
                     <x-nav-link :href="route('network-traffic')" :active="request()->routeIs('network-traffic')">
                         {{ __('Network Traffic') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('bans.show')" :active="request()->routeIs('bans.show')">
+                        {{ __('Bans') }}
                     </x-nav-link>
                 </div>
             </div>
