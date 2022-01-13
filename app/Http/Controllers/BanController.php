@@ -12,17 +12,16 @@ class BanController extends Controller
 
     public function index()
     {
-        $logs = ConnectionLog::sortStatsList('last_ban', SortType::DESC);
+        $bans = ConnectionLog::orderByLastBan();
 
-
-        return view('bans.list')->with('logs', $logs);
+        return view('bans.list')->with('bans', $bans);
     }
 
     public function sort(string $param, int $type = SortType::ASC)
     {
-        $logs = ConnectionLog::sortStatsList($param, $type);
+        $bans = ConnectionLog::sortStatsList($param, $type);
 
-        return view('bans.list')->with('logs', $logs);
+        return view('bans.list')->with('bans', $bans);
     }
 
     public function filter(BanFilterRequest $request)

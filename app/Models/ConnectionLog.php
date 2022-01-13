@@ -77,6 +77,11 @@ class ConnectionLog extends Model
         return self::statsList()->$function($filter);
     }
 
+    public static function orderByLastBan()
+    {
+        return static::sortStatsList('last_ban', SortType::DESC);
+    }
+
     public static function filterStatsList(array $filters)
     {
         $query = self::$query;
