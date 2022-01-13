@@ -16,20 +16,23 @@ class ConnectionLog extends Model
     protected $visible = ['ip', 'port', 'jail'];
     protected $hidden = '_id';
 
-    private static $query = [[
-        '$group' => [
-            '_id' => ['ip' => '$ip', 'jail' => '$jail', 'port' => '$port'],
-            // this is the only way to tell mongodb to also fetch other fields that are not in the query
-            // otherwise, aggregate will return 
-            // "_id" => MongoDB\Model\BSONDocument {#1508 ▶}
-            // "last_ban" => 1622274199
-            // "nbr_bans" => 1
-            'ip'  => ['$first' => '$ip'],
-            'jail'  => ['$first' => '$jail'],
-            'port'  => ['$first' => '$port'],
-            'last_ban'  => ['$max' => '$ts'],
-            'nbr_bans'  => ['$sum' => 1],
-        ]],
+    private static $query = [
+        [
+            '$group' => [
+                '_id' => ['ip' => '$ip', 'jail' => '$jail', 'port' => '$port'],
+                // this is the only way to tell mongodb to also fetch other fields that are not in the query
+                // otherwise, aggregate will return 
+                // "_id" => MongoDB\Model\BSONDocument {#1508 ▶}
+                // "last_ban" => 1622274199
+                // "nbr_bans" => 1
+                'id'  => ['$first' => '$_id'],
+                'ip'  => ['$first' => '$ip'],
+                'jail'  => ['$first' => '$jail'],
+                'port'  => ['$first' => '$port'],
+                'last_ban'  => ['$max' => '$ts'],
+                'nbr_bans'  => ['$sum' => 1],
+            ]
+        ],
     ];
 
 
@@ -100,7 +103,7 @@ class ConnectionLog extends Model
         // does not work for now
         if (array_key_exists('ban', $filters)) {
             $match['ts'] = [
-                '$gt' => ['ts' =>Carbon::now()->subDays($filters['ban'][0])->getTimestamp()],
+                '$gt' => ['ts' => Carbon::now()->subDays($filters['ban'][0])->getTimestamp()],
             ];
         }
 
@@ -110,5 +113,12 @@ class ConnectionLog extends Model
 
         $result = self::fetch($query);
         return $result;
+    }
+
+    public static function showStats(ConnectionLog $ban)
+    {
+        return ConnectionLog::where('jail', $ban->jail)
+            ->where('port', $ban->port)
+            ->where('ip', $ban->ip);
     }
 }

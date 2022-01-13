@@ -32,4 +32,17 @@ class BanController extends Controller
 
         return view('bans.list')->with('logs', $logs);
     }
+
+    public function show(string $id)
+    {
+        $ban = ConnectionLog::findOrFail($id);
+        $bans = ConnectionLog::showStats($ban)->get();
+
+        return view('bans.show')->with('bans', $bans)->with('jail', $ban->jail);
+    }
+
+    public function blacklist (string $id)
+    {
+        dd($id);
+    }
 }

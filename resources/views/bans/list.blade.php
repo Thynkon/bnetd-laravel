@@ -323,10 +323,11 @@
                                                                         Carbon\Carbon::createFromTimestamp($log->last_ban)->diffForHumans()
                                                                         }}
                                                                     </td>
-                                                                    <td
-                                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                                        <a href="#"
-                                                                            class="text-indigo-600 hover:text-indigo-900">Ban</a>
+                                                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                        <div class="flex justify-between">
+                                                                          <a href="{{ route('bans.blacklist', ['id' => $log->id]) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Blacklist') }}</a>
+                                                                          <a href="{{ route('bans.show', ['id' => $log->id]) }}" class="text-indigo-600 hover:text-indigo-900">{{ __('Show details') }}</a>
+                                                                        </div>
                                                                     </td>
                                                                 </tr>
                                                                 @endforeach
