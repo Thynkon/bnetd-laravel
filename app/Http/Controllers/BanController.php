@@ -13,7 +13,7 @@ class BanController extends Controller
 
     public function index()
     {
-        $logs = ConnectionLog::sortStatsList('last_ban', SortType::ASC);
+        $logs = ConnectionLog::sortStatsList('last_ban', SortType::DESC);
 
 
         return view('bans.list')->with('logs', $logs);
