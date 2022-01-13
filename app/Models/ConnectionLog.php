@@ -100,16 +100,16 @@ class ConnectionLog extends Model
             ];
         }
 
-        // does not work for now
         if (array_key_exists('ban', $filters)) {
-            $match['ts'] = [
-                '$gt' => ['ts' => Carbon::now()->subDays($filters['ban'][0])->getTimestamp()],
+            $match['last_ban'] = [
+                '$gt' => Carbon::now()->subDays($filters['ban'][0])->getTimestamp(),
             ];
         }
 
         $query[] = [
             '$match' => $match
         ];
+
 
         $result = self::fetch($query);
         return $result;
