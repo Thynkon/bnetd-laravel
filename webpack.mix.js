@@ -16,6 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/formatBytes.js', 'public/js')
     .js('resources/js/custom_chart.js', 'public/js')
     .js('resources/js/dropdown.js', 'public/js')
+    .js('resources/js/notification.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
     .options({
         postCss: [tailwindcss('./tailwind.config.js')]

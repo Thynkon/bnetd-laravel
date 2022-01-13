@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Jail;
 use App\Helpers\SortType;
-use App\Http\Requests\FilterConnectionLogRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\BanFilterRequest;
 use App\Models\ConnectionLog;
 
 class BanController extends Controller
@@ -26,11 +25,12 @@ class BanController extends Controller
         return view('bans.list')->with('logs', $logs);
     }
 
-    public function filter(Request $request)
+    public function filter(BanFilterRequest $request)
     {
-        $logs = ConnectionLog::filterStatsList($request->all());
+        $validated_data = $request->validated();
+        $bans = ConnectionLog::filterStatsList($validated_data);
 
-        return view('bans.list')->with('logs', $logs);
+        return view('bans.list')->with('bans', $bans);
     }
 
     public function show(string $id)
