@@ -1,4 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/formatBytes.js": "/js/formatBytes.js",
+    "/js/custom_chart.js": "/js/custom_chart.js",
+    "/js/dropdown.js": "/js/dropdown.js",
     "/css/app.css": "/css/app.css"
 }
