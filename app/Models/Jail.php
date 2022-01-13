@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Support\Facades\Storage;
+use App\Models\Ban;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Storage;
 
 class Jail 
 {
@@ -24,7 +25,7 @@ class Jail
                     $jails[$jail_name][$key] = explode(',', $value);
                 }
             }
-            $jails[$jail_name]['ban_count'] = ConnectionLog::byJail($jail_name)->count();
+            $jails[$jail_name]['ban_count'] = Ban::byJail($jail_name)->count();
         }
 
         return $jails;
@@ -35,7 +36,7 @@ class Jail
             $jail_name = pathinfo($jail, PATHINFO_FILENAME);
             $content = Storage::path($jail);
             $parsed_content = parse_ini_file($content);
-            $parsed_content['ban_count'] = ConnectionLog::byJail($jail_name)->count();
+            $parsed_content['ban_count'] = Ban::byJail($jail_name)->count();
 
             $jails->put($jail_name, $parsed_content);
             // if a param contains ',', convert it to an array

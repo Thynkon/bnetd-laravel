@@ -7,11 +7,11 @@ use Jenssegers\Mongodb\Eloquent\Model;
 use App\Helpers\SortType;
 use Carbon\Carbon;
 
-class ConnectionLog extends Model
+class Ban extends Model
 {
     use HasFactory;
 
-    protected $table = "connection_logs";
+    protected $table = "bans";
     public $timestamps = false;
     protected $visible = ['ip', 'port', 'jail'];
     protected $hidden = '_id';
@@ -51,7 +51,7 @@ class ConnectionLog extends Model
 
     public static function byJail(string $jail)
     {
-        return ConnectionLog::where('jail', $jail);
+        return Ban::where('jail', $jail);
     }
 
     public static function statsList()
@@ -61,7 +61,7 @@ class ConnectionLog extends Model
 
     private static function fetch(array $query)
     {
-        return ConnectionLog::raw(function ($collection) use ($query) {
+        return Ban::raw(function ($collection) use ($query) {
             return $collection->aggregate($query);
         });
     }
@@ -120,9 +120,9 @@ class ConnectionLog extends Model
         return $result;
     }
 
-    public static function showStats(ConnectionLog $ban)
+    public static function showStats(Ban $ban)
     {
-        return ConnectionLog::where('jail', $ban->jail)
+        return Ban::where('jail', $ban->jail)
             ->where('port', $ban->port)
             ->where('ip', $ban->ip);
     }

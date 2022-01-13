@@ -3,10 +3,10 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\ConnectionLog;
+use App\Models\Ban;
 use Faker\Factory as Faker;
 
-class ConnectionLogSeeder extends Seeder
+class BanSeeder extends Seeder
 {
         private $faker;
 
@@ -24,10 +24,10 @@ class ConnectionLogSeeder extends Seeder
         public function run()
         {
 
-                // I know that I should use ConnectionLog::create() and pass an array of arrays
+                // I know that I should use Ban::create() and pass an array of arrays
                 // but by doing this, in mongodb I have an object containing all logs instead of
                 // a list of logs
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -37,7 +37,7 @@ class ConnectionLogSeeder extends Seeder
                         ]
                 );
 
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -46,14 +46,14 @@ class ConnectionLogSeeder extends Seeder
                                 'username' => 'nginx',
                         ]
                 );
-                ConnectionLog::insert([
+                Ban::insert([
                         'ip' => $this->faker->ipv4(),
                         'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
                         'port' => 22,
                         'jail' => 'sshd',
                         'username' => 'nextcloud',
                 ]);
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -62,7 +62,7 @@ class ConnectionLogSeeder extends Seeder
                                 'username' => 'pi',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -71,7 +71,7 @@ class ConnectionLogSeeder extends Seeder
                                 'username' => 'ubuntu-user',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -82,7 +82,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -93,7 +93,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Opera/9.86 (Windows NT 5.01; en-US) Presto/2.12.281 Version/11.00',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -104,7 +104,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36 RuxitSynthetic/1.0 v462564867 t8145687281368250631 athfa3c3975 altpub cvcv=2 smf=0',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -115,7 +115,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -126,7 +126,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (Linux; Android 6.0.1; SM-G532M) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.136 Mobile Safari/537.36',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -137,7 +137,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -148,7 +148,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -159,7 +159,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.108 Safari/537.36',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),
@@ -170,7 +170,7 @@ class ConnectionLogSeeder extends Seeder
                                 'user_agent' => 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.82 Safari/537.36 RuxitSynthetic/1.0 v6602615767553383452 t6816603945225267545 ath259cea6f altpriv cvcv=2 smf=0',
                         ]
                 );
-                ConnectionLog::insert(
+                Ban::insert(
                         [
                                 'ip' => $this->faker->ipv4(),
                                 'ts' => $this->faker->dateTimeThisYear()->getTimestamp(),

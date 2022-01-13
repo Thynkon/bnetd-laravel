@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ConnectionLog extends Migration
+class Ban extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class ConnectionLog extends Migration
      */
     public function up()
     {
-        Schema::create('connection_logs', function (Blueprint $table) {
+        Schema::create('bans', function (Blueprint $table) {
             $table->id();
             $table->integer('ip');
             $table->timestamp('ts');
@@ -29,6 +29,6 @@ class ConnectionLog extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('connection_logs');
+        Schema::dropIfExists('bans');
     }
 }
