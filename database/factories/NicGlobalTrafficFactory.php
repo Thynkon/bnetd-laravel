@@ -20,7 +20,7 @@ class NicGlobalTrafficFactory extends Factory
         return [
             'rx' => $rx_base + $increment + $this->faker->randomNumber(),
             'tx' => $tx_base + $increment + $this->faker->randomNumber(),
-            'ts' => $this->faker->dateTimeBetween('+0 days','+365 days')->getTimestamp(),
+            'ts' => $this->faker->dateTimeBetween('-1 years','now')->getTimestamp(),
             'iface' => 'eth0',
         ];
     }

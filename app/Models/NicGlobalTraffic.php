@@ -11,8 +11,8 @@ class NicGlobalTraffic extends Model
     use HasFactory;
     public $timestamps = false;
 
-    public function scopeUpdatedSince($query)
+    public function scopeUpdatedSince($query, $days)
     {
-        return $query->where('ts', '>=', Carbon::today()->subDays(1)->getTimestamp());
+        return $query->where('ts', '>=', Carbon::today()->subDays($days)->getTimestamp());
     }
 }

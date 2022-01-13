@@ -45,7 +45,7 @@ class NetworkTraffics extends Component
         });
 
         for ($i = 0; $i < 24; $i++) {
-            $this->networkTraffics[$i . "h"] = isset($networkTraffics[$i]) ? intdiv(intdiv($networkTraffics[$i]->sum('rx'), 1024), 1024) : 0;
+            $this->networkTraffics[$i . "h"] = isset($networkTraffics[$i]) ? intdiv($networkTraffics[$i]->sum('rx'), 1024) : 0;
         }
     }
 
@@ -61,18 +61,18 @@ class NetworkTraffics extends Component
             ];
         }
 
-        $networkTraffics = NicGlobalTraffic::updatedSince(count($week))->get()->groupBy(function ($item) {
+        $networkTraffics = NicGlobalTraffic::updatedSince(7)->get()->groupBy(function ($item) {
             return Carbon::parse($item['ts'])->day;
         });
 
         foreach ($week as $day) {
-            $this->networkTraffics[$day['date']] = isset($networkTraffics[$day['date']]) ? intdiv(intdiv($networkTraffics[$day['date']]->sum('rx'), 1024), 1024) : 0;
+            $this->networkTraffics[$day['value']] = isset($networkTraffics[$day['date']]) ? intdiv($networkTraffics[$day['date']]->sum('rx'), 1024) : 0;
         }
     }
 
     private function byMonth()
     {
-        $period = now()->subMonths(12)->monthsUntil(today()->startOfMonth());
+        $period = now()->subMonths(12)->monthsUntil(now());
 
         $months = [];
         foreach ($period as $date) {
@@ -84,7 +84,7 @@ class NetworkTraffics extends Component
         });
 
         for ($i = 0; $i < count($period); $i++) {
-            $this->networkTraffics[$months[$i]] = isset($networkTraffics[$i]) ? intdiv(intdiv($networkTraffics[$i]->sum('rx'), 1024), 1024) : 0;
+            $this->networkTraffics[$months[$i]] = isset($networkTraffics[$i]) ? intdiv($networkTraffics[$i]->sum('rx'), 1024) : 0;
         }
     }
 
