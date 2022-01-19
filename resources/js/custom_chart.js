@@ -13,14 +13,15 @@ const myChart = new Chart(ctx, {
                 backgroundColor: [
                     'rgba(158, 165, 215, 0.9)',
                     'rgba(65, 65, 80, 0.9)'
-                ],
+                ]
             }
         ]
     },
     options: {
         scales: {
             y: {
-                beginAtZero: true
+                beginAtZero: true,
+                type: 'linear'
             }
         },
         plugins: {
@@ -35,13 +36,12 @@ const myChart = new Chart(ctx, {
     }
 })
 
+document.getElementById('axes-type').addEventListener('change', function () {
+    myChart.options.scales.y.type = this.value
+    myChart.update()
+})
+
 window.addEventListener('contentChanged', event => {
     nt = JSON.parse(document.getElementById('myChart').dataset.nt)
     myChart.data.datasets[0].data = nt
-
-    var colors = []
-
-    Object.keys(nt).forEach(function (key, index) {
-        console.log(this[key])
-    }, nt)
 })
