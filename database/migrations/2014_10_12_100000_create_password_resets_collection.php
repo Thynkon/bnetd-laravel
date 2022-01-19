@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCountry extends Migration
+class CreatePasswordResetsCollection extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddCountry extends Migration
      */
     public function up()
     {
-        Schema::table('bans', function (Blueprint $table) {
-            $table->string('country');
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -25,8 +27,6 @@ class AddCountry extends Migration
      */
     public function down()
     {
-        Schema::table('bans', function (Blueprint $table) {
-            $table->dropColumn('country');
-        });
+        Schema::dropIfExists('password_resets');
     }
 }

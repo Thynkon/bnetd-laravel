@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Ban extends Migration
+class CreateNicProtocolTrafficCollection extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class Ban extends Migration
      */
     public function up()
     {
-        Schema::create('bans', function (Blueprint $table) {
+        Schema::create('nic_protocol_traffic', function (Blueprint $table) {
             $table->id();
             $table->integer('ip');
+            $table->integer('pkt_len');
             $table->timestamp('ts');
             $table->integer('port');
-            $table->string('jail');
+            $table->string('iface');
         });
     }
 
@@ -29,6 +30,6 @@ class Ban extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bans');
+        Schema::dropIfExists('nic_protocol_traffic');
     }
 }
