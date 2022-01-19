@@ -20,6 +20,7 @@ class BanController extends Controller
     public function sort(string $param, int $type = SortType::ASC)
     {
         $bans = Ban::sortStatsList($param, $type);
+        session(['sort' => $param]);
 
         return view('bans.list')->with('bans', $bans);
     }
@@ -27,6 +28,10 @@ class BanController extends Controller
     public function filter(BanFilterRequest $request)
     {
         $validated_data = $request->validated();
+
+        // store filter preferences in session
+        session(['filter' => $validated_data]);
+
         $bans = Ban::filterStatsList($validated_data);
 
         return view('bans.list')->with('bans', $bans);

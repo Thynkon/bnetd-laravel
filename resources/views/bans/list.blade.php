@@ -129,9 +129,9 @@
                                     class="relative z-10 flex items-baseline justify-end pt-4 sm:pt-6 lg:pt-8 pb-6 border-b border-gray-200">
                                     <div class="flex items-center">
                                         <div class="relative inline-block text-left">
-                                            <div>
+                                            <div class="flex">
                                                 <button type="button"
-                                                    class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
+                                                    class="group inline-flex justify-center items-center text-sm font-medium text-gray-700 hover:text-gray-900 mr-4"
                                                     id="menu-button" aria-expanded="false" aria-haspopup="true">
                                                     Sort
                                                     <!-- Heroicon name: solid/chevron-down -->
@@ -143,6 +143,9 @@
                                                             clip-rule="evenodd" />
                                                     </svg>
                                                 </button>
+                                                <div class="bg-green-100 text-green-800 p-2 rounded">
+                                                    {{session()->get('sort')}}
+                                                </div>
                                             </div>
 
                                             <div id="sort-list"
@@ -198,11 +201,12 @@
                                             @php($options['jails'] = \App\Models\Jail::all()->pluck('filter'))
                                             @php($options['ports'] = collect([22, 80, 443]))
                                             @php($options['bans'] = collect([1, 7, 30]))
+                                            @php($options['countries'] = \App\Models\Ban::listOfCountries())
 
                                             <x-filter title="Jails" name="jail" :options="$options['jails']" />
                                             <x-filter title="Port" name="port" :options="$options['ports']" />
-                                            <x-filter title="Last ban (in days)" name="ban"
-                                                :options="$options['bans']" />
+                                            <x-filter title="Last ban (in days)" name="ban" :options="$options['bans']" />
+                                            <x-filter title="Country" name="country" :options="$options['countries']" />
                                             @csrf
 
                                             <button

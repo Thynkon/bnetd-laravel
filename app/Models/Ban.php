@@ -14,6 +14,19 @@ class Ban extends Model
     protected $table = "bans";
     public $timestamps = false;
     protected $visible = ['ip', 'country', 'port', 'jail'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'ip',
+        'timestamp',
+        'port',
+        'jail',
+        'username',
+        'country',
+    ];
     protected $hidden = '_id';
 
     private static $query = [
@@ -34,20 +47,6 @@ class Ban extends Model
                 'nbr_bans' => ['$sum' => 1],
             ]
         ],
-    ];
-
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var string[]
-     */
-    protected $fillable = [
-        'ip',
-        'timestamp',
-        'port',
-        'jail',
-        'username',
     ];
 
     public static function byJail(string $jail)
@@ -112,6 +111,12 @@ class Ban extends Model
             ];
         }
 
+        if (array_key_exists('country', $filters)) {
+            $match['country'] = [
+                '$in' => $filters['country'],
+            ];
+        }
+
         $query[] = [
             '$match' => $match
         ];
@@ -126,5 +131,10 @@ class Ban extends Model
         return Ban::where('jail', $ban->jail)
             ->where('port', $ban->port)
             ->where('ip', $ban->ip);
+    }
+
+    public static function listOfCountries()
+    {
+        return static::orderBy('country','asc')->groupBy('country')->get()->pluck('country');
     }
 }
