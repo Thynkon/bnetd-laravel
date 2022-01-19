@@ -198,11 +198,12 @@
                                             @php($options['jails'] = \App\Models\Jail::all()->pluck('filter'))
                                             @php($options['ports'] = collect([22, 80, 443]))
                                             @php($options['bans'] = collect([1, 7, 30]))
+                                            @php($options['countries'] = \App\Models\Ban::listOfCountries())
 
                                             <x-filter title="Jails" name="jail" :options="$options['jails']" />
                                             <x-filter title="Port" name="port" :options="$options['ports']" />
-                                            <x-filter title="Last ban (in days)" name="ban"
-                                                :options="$options['bans']" />
+                                            <x-filter title="Last ban (in days)" name="ban" :options="$options['bans']" />
+                                            <x-filter title="Country" name="country" :options="$options['countries']" />
                                             @csrf
 
                                             <button

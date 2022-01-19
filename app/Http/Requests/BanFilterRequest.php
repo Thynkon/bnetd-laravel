@@ -24,9 +24,10 @@ class BanFilterRequest extends FormRequest
     public function rules()
     {
         return [
-            'jail' => 'required_without_all:port,ban|array|min:1',
-            'port' => 'required_without_all:jail,ban|array|min:1',
-            'ban' => 'required_without_all:jail,port|array|max:1',
+            'jail' => 'required_without_all:port,ban,country|array|min:1',
+            'port' => 'required_without_all:jail,ban,country|array|min:1',
+            'ban' => 'required_without_all:jail,port,country|array|max:1',
+            'country' => 'required_without_all:jail,port,ban|array|min:1',
         ];
     }
 }
