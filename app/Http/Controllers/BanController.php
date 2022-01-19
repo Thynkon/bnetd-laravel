@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ban;
 use App\Models\Jail;
 use App\Helpers\SortType;
 use App\Http\Requests\BanFilterRequest;
-use App\Models\Ban;
 
 class BanController extends Controller
 {

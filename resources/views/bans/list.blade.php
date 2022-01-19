@@ -254,9 +254,7 @@
                                                                                     {{ $ban->ip }}
                                                                                 </div>
                                                                                 <div class="text-sm text-gray-500">
-                                                                                    SHOW COUNTRY AND COMPANY THAT OWNS
-                                                                                    THE
-                                                                                    IP
+                                                                                    {{ $ban->country }}
                                                                                 </div>
                                                                             </div>
                                                                         </td>

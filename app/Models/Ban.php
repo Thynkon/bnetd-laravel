@@ -13,7 +13,7 @@ class Ban extends Model
 
     protected $table = "bans";
     public $timestamps = false;
-    protected $visible = ['ip', 'port', 'jail'];
+    protected $visible = ['ip', 'country', 'port', 'jail'];
     protected $hidden = '_id';
 
     private static $query = [
@@ -25,12 +25,13 @@ class Ban extends Model
                 // "_id" => MongoDB\Model\BSONDocument {#1508 ▶}
                 // "last_ban" => 1622274199
                 // "nbr_bans" => 1
-                'id'  => ['$first' => '$_id'],
-                'ip'  => ['$first' => '$ip'],
-                'jail'  => ['$first' => '$jail'],
-                'port'  => ['$first' => '$port'],
-                'last_ban'  => ['$max' => '$ts'],
-                'nbr_bans'  => ['$sum' => 1],
+                'id' => ['$first' => '$_id'],
+                'ip' => ['$first' => '$ip'],
+                'country' => ['$first' => '$country'],
+                'jail' => ['$first' => '$jail'],
+                'port' => ['$first' => '$port'],
+                'last_ban' => ['$max' => '$ts'],
+                'nbr_bans' => ['$sum' => 1],
             ]
         ],
     ];
