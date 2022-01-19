@@ -123,7 +123,7 @@
                             </div>
                             <div
                                 class="relative z-10 flex items-baseline pt-4 sm:pt-6 lg:pt-8 pb-6 border-b border-gray-200">
-                                <a href="{{ route('network-traffic') }}"
+                                <a href="{{ url()->previous() }}"
                                     class="px-3 py-1 bg-gray-800 hover:bg-gray-900 rounded text-sm text-gray-50">
                                     Back
                                 </a>

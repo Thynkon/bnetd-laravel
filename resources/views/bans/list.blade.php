@@ -125,9 +125,12 @@
                                     @include('flash-message')
                                 </div>
 
-                                <div
-                                    class="relative z-10 flex items-baseline justify-end pt-4 sm:pt-6 lg:pt-8 pb-6 border-b border-gray-200">
-                                    <div class="flex items-center">
+                                <div class="relative z-10 flex items-baseline pt-4 sm:pt-6 lg:pt-8 pb-6 border-b border-gray-200">
+                                    <a href="{{ url()->previous() }}"
+                                        class="px-3 py-1 bg-gray-800 hover:bg-gray-900 rounded text-sm text-gray-50">
+                                        Back
+                                    </a>
+                                    <div class="flex flex-grow items-center justify-end">
                                         <div class="relative inline-block text-left">
                                             <div class="flex">
                                                 <button type="button"
@@ -144,7 +147,11 @@
                                                     </svg>
                                                 </button>
                                                 <div class="bg-green-100 text-green-800 p-2 rounded">
-                                                    {{session()->get('sort')}}
+                                                    @if (session()->has('sort'))
+                                                        {{session()->get('sort')}}
+                                                    @else
+                                                        {{ __('None') }}
+                                                    @endif
                                                 </div>
                                             </div>
 
