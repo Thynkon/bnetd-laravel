@@ -6,8 +6,11 @@ use Livewire\Component;
 
 class ProtocolTrafficSort extends Component
 {
-    public function sort($condition) {
-        $this->emit('sort', $condition);
+    public string $sort;
+
+    public function sort($attribute) {
+        $this->sort = $attribute;
+        $this->emit('sort', $attribute);
     }
 
     public function render()

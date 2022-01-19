@@ -12,7 +12,7 @@
                                 Back
                             </a>
                             <div class="flex flex-grow items-center justify-end">
-                                <div class="relative inline-block text-left">
+                                <div class="flex relative text-left items-center">
                                     <!-- Sort !-->
                                     <button type="button"
                                         class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
