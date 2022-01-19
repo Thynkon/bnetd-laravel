@@ -53,7 +53,6 @@
                     </div>
                 </div>
 
-                <script src="{{ asset('/js/dropdown.js') }}"></script>
                 <script src="{{ asset('/js/notification.js') }}"></script>
             </div>
         </div>

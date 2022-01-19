@@ -10,15 +10,24 @@ class ProtocolTrafficList extends Component
 {
     use WithPagination;
 
-    private $protocols;
+    protected $listeners = ['sort'];
 
-    public function mount()
+    private $protocols;
+    private $sort;
+
+    public function sort($attribute)
     {
+        $this->sort = NicProtocolTraffic::orderBy($attribute);
     }
 
     public function render()
     {
-        $this->protocols = NicProtocolTraffic::today()->orderByDesc()->paginate(10);
+        if (isset($this->sort)) {
+            $this->protocols = $this->sort->today()->orderByDesc()->paginate(10);
+        } else {
+            $this->protocols = NicProtocolTraffic::today()->orderByDesc()->paginate(10);
+        }
+
         return view('livewire.protocol.protocol-traffic-list')->with('protocols', $this->protocols);
     }
 }
