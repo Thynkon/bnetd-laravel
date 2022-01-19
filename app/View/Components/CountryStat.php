@@ -2,18 +2,20 @@
 
 namespace App\View\Components;
 
+use App\Models\Ban;
+use Illuminate\Support\Collection;
 use Illuminate\View\Component;
 
 class CountryStat extends Component
 {
-    public array $stat;
+    public Ban $stat;
 
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(array $stat)
+    public function __construct(Ban $stat)
     {
         $this->stat = $stat;
     }

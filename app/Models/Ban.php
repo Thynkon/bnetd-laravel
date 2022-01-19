@@ -137,4 +137,28 @@ class Ban extends Model
     {
         return static::orderBy('country','asc')->groupBy('country')->get()->pluck('country');
     }
+
+    public static function countBansPerCountry()
+    {
+        // I didn't find a way to perform a group by, count and fetch another fields
+        // using the ORM. That's why we perform the query 'manually'
+        return static::raw(function ($collection) {
+            return $collection->aggregate(
+                [
+                    [
+                        '$group' => [
+                            '_id' => ['country' => '$country'],
+                            'country' => ['$first' => '$country'],
+                            'ban_count' => ['$sum' => 1],
+                        ],
+                    ],
+                    [
+                        '$sort' => [
+                            'ban_count' => SortType::DESC,
+                        ]
+                    ]
+                ]
+            );
+        });
+    }
 }
