@@ -27,6 +27,10 @@ class BanController extends Controller
     public function filter(BanFilterRequest $request)
     {
         $validated_data = $request->validated();
+
+        // store filter preferences in session
+        session(['filter' => $validated_data]);
+
         $bans = Ban::filterStatsList($validated_data);
 
         return view('bans.list')->with('bans', $bans);
