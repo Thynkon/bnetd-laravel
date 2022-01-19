@@ -22,7 +22,7 @@
                         {{ __('Network Traffic') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('bans.show')" :active="request()->routeIs('bans.show')">
+                    <x-nav-link :href="route('bans.index')" :active="request()->routeIs('bans.index')">
                         {{ __('Bans') }}
                     </x-nav-link>
                 </div>

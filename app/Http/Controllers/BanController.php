@@ -2,34 +2,46 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ban;
 use App\Models\Jail;
 use App\Helpers\SortType;
-use App\Http\Requests\FilterConnectionLogRequest;
-use Illuminate\Http\Request;
-use App\Models\ConnectionLog;
+use App\Http\Requests\BanFilterRequest;
 
 class BanController extends Controller
 {
 
     public function index()
     {
-        $logs = ConnectionLog::sortStatsList('last_ban', SortType::ASC);
+        $bans = Ban::orderByLastBan();
 
-
-        return view('bans.list')->with('logs', $logs);
+        return view('bans.list')->with('bans', $bans);
     }
 
     public function sort(string $param, int $type = SortType::ASC)
     {
-        $logs = ConnectionLog::sortStatsList($param, $type);
+        $bans = Ban::sortStatsList($param, $type);
 
-        return view('bans.list')->with('logs', $logs);
+        return view('bans.list')->with('bans', $bans);
     }
 
-    public function filter(Request $request)
+    public function filter(BanFilterRequest $request)
     {
-        $logs = ConnectionLog::filterStatsList($request->all());
+        $validated_data = $request->validated();
+        $bans = Ban::filterStatsList($validated_data);
 
-        return view('bans.list')->with('logs', $logs);
+        return view('bans.list')->with('bans', $bans);
+    }
+
+    public function show(string $id)
+    {
+        $ban = Ban::findOrFail($id);
+        $bans = Ban::showStats($ban)->get();
+
+        return view('bans.show')->with('bans', $bans)->with('jail', $ban->jail);
+    }
+
+    public function blacklist (string $id)
+    {
+        dd($id);
     }
 }

@@ -11,7 +11,7 @@ class DashboardController extends Controller
         $jails = Jail::all();
 
 /*
-        $ips = ConnectionLog::all('ip')->pluck('ip');
+        $ips = Ban::all('ip')->pluck('ip');
         $stats = collect();
         $location = null;
         foreach ($ips as $ip) {

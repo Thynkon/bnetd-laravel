@@ -5,34 +5,8 @@
                 <div class="flex flex-col">
                     <div class="bg-white">
                         <div>
-                            <!--
-                            Mobile filter dialog
-                      
-                            Off-canvas filters for mobile, show/hide based on off-canvas filters state.
-                          -->
                             <div class="fixed inset-0 flex z-40 lg:hidden" role="dialog" aria-modal="true">
-                                <!--
-                              Off-canvas menu overlay, show/hide based on off-canvas menu state.
-                      
-                              Entering: "transition-opacity ease-linear duration-300"
-                                From: "opacity-0"
-                                To: "opacity-100"
-                              Leaving: "transition-opacity ease-linear duration-300"
-                                From: "opacity-100"
-                                To: "opacity-0"
-                            -->
                                 <div class="fixed inset-0 bg-black bg-opacity-25" aria-hidden="true"></div>
-
-                                <!--
-                              Off-canvas menu, show/hide based on off-canvas menu state.
-                      
-                              Entering: "transition ease-in-out duration-300 transform"
-                                From: "translate-x-full"
-                                To: "translate-x-0"
-                              Leaving: "transition ease-in-out duration-300 transform"
-                                From: "translate-x-0"
-                                To: "translate-x-full"
-                            -->
                                 <div
                                     class="ml-auto relative max-w-xs w-full h-full bg-white shadow-xl py-4 pb-12 flex flex-col overflow-y-auto">
                                     <div class="px-4 flex items-center justify-between">
@@ -61,22 +35,12 @@
                                                         Size
                                                     </span>
                                                     <span class="ml-6 flex items-center">
-                                                        <!--
-                                          Expand icon, show/hide based on section open state.
-                      
-                                          Heroicon name: solid/plus-sm
-                                        -->
                                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                             <path fill-rule="evenodd"
                                                                 d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                                                                 clip-rule="evenodd" />
                                                         </svg>
-                                                        <!--
-                                          Collapse icon, show/hide based on section open state.
-                      
-                                          Heroicon name: solid/minus-sm
-                                        -->
                                                         <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg"
                                                             viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                             <path fill-rule="evenodd"
@@ -156,6 +120,11 @@
                             </div>
 
                             <main class="w-full mx-auto px-4 sm:px-6 lg:px-8">
+
+                                <div class="mt-4">
+                                    @include('flash-message')
+                                </div>
+
                                 <div
                                     class="relative z-10 flex items-baseline justify-end pt-4 sm:pt-6 lg:pt-8 pb-6 border-b border-gray-200">
                                     <div class="flex items-center">
@@ -176,26 +145,11 @@
                                                 </button>
                                             </div>
 
-                                            <!--
-                                    Dropdown menu, show/hide based on menu state.
-                      
-                                    Entering: "transition ease-out duration-100"
-                                      From: "transform opacity-0 scale-95"
-                                      To: "transform opacity-100 scale-100"
-                                    Leaving: "transition ease-in duration-75"
-                                      From: "transform opacity-100 scale-100"
-                                      To: "transform opacity-0 scale-95"
-                                  -->
                                             <div id="sort-list"
                                                 class="origin-top-right absolute right-0 mt-2 w-40 rounded-md shadow-2xl bg-white ring-1 ring-black ring-opacity-5 focus:outline-none hidden"
                                                 role="menu" aria-orientation="vertical" aria-labelledby="menu-button"
                                                 tabindex="-1">
                                                 <div class="py-1" role="none">
-                                                    <!--
-                                        Active: "bg-gray-100", Not Active: ""
-                      
-                                        Selected: "font-medium text-gray-900", Not Selected: "text-gray-500"
-                                      -->
                                                     <a href="{{ route('bans.sort', ['param' => 'country']) }}"
                                                         class="font-medium text-gray-900 block px-4 py-2 text-sm"
                                                         role="menuitem" tabindex="-1" id="menu-item-0">Country</a>
@@ -224,8 +178,9 @@
                                             class="p-2 -m-2 ml-4 sm:ml-6 text-gray-400 hover:text-gray-500 lg:hidden">
                                             <span class="sr-only">Filters</span>
                                             <!-- Heroicon name: solid/filter -->
-                                            <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 20 20" fill="currentColor">
+                                            <svg class="w-5 h-5" aria-hidden="true"
+                                                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                                fill="currentColor">
                                                 <path fill-rule="evenodd"
                                                     d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z"
                                                     clip-rule="evenodd" />
@@ -235,22 +190,23 @@
                                 </div>
 
                                 <section aria-labelledby="products-heading" class="pt-6 pb-24">
-                                    <h2 id="products-heading" class="sr-only">Products</h2>
-
                                     <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
                                         <!-- Filters -->
-                                        <form class="hidden lg:block" action="{{ route('bans.filter') }}" method="post">
+                                        <form class="hidden lg:block" action="{{ route('bans.filter') }}"
+                                            method="post">
 
-                                            @php ($options['jails'] = \App\Models\Jail::all()->pluck('filter'))
-                                            @php ($options['ports'] = collect([22,80,443]))
-                                            @php ($options['bans'] = collect([1,7,30]))
+                                            @php($options['jails'] = \App\Models\Jail::all()->pluck('filter'))
+                                            @php($options['ports'] = collect([22, 80, 443]))
+                                            @php($options['bans'] = collect([1, 7, 30]))
 
                                             <x-filter title="Jails" name="jail" :options="$options['jails']" />
                                             <x-filter title="Port" name="port" :options="$options['ports']" />
-                                            <x-filter title="Last ban (in days)" name="ban" :options="$options['bans']" />
+                                            <x-filter title="Last ban (in days)" name="ban"
+                                                :options="$options['bans']" />
                                             @csrf
 
-                                            <button class="px-2 py-1 mt-4 sm:tp-6 lg:mt-8 bg-gray-800 hover:bg-gray-900 rounded text-sm text-gray-50 w-full h-10">Apply</button>
+                                            <button
+                                                class="px-2 py-1 mt-4 sm:tp-6 lg:mt-8 bg-gray-800 hover:bg-gray-900 rounded text-sm text-gray-50 w-full h-10">Apply</button>
                                         </form>
 
                                         <!-- Product grid -->
@@ -289,46 +245,48 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="bg-white divide-y divide-gray-200">
-                                                                @foreach ($logs as $log)
-                                                                <tr>
-                                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                                        <div>
-                                                                            <div
-                                                                                class="text-sm font-medium text-gray-900">
-                                                                                {{ $log->ip }}
+                                                                @foreach ($bans as $ban)
+                                                                    <tr>
+                                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                                            <div>
+                                                                                <div
+                                                                                    class="text-sm font-medium text-gray-900">
+                                                                                    {{ $ban->ip }}
+                                                                                </div>
+                                                                                <div class="text-sm text-gray-500">
+                                                                                    {{ $ban->country }}
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="text-sm text-gray-500">
-                                                                                SHOW COUNTRY AND COMPANY THAT OWNS THE
-                                                                                IP
+                                                                        </td>
+                                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                                            <div class="text-sm text-gray-900">
+                                                                                {{ $ban->jail }}
                                                                             </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                                        <div class="text-sm text-gray-900">{{ $log->jail
-                                                                            }}</div>
-                                                                    </td>
-                                                                    <td class="px-6 py-4 whitespace-nowrap">
-                                                                        <span
-                                                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                                                                            {{ $log->port }}
-                                                                        </span>
-                                                                    </td>
-                                                                    <td
-                                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                                        {{ $log->nbr_bans }}
-                                                                    </td>
-                                                                    <td
-                                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                                        {{
-                                                                        Carbon\Carbon::createFromTimestamp($log->last_ban)->diffForHumans()
-                                                                        }}
-                                                                    </td>
-                                                                    <td
-                                                                        class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                                        <a href="#"
-                                                                            class="text-indigo-600 hover:text-indigo-900">Ban</a>
-                                                                    </td>
-                                                                </tr>
+                                                                        </td>
+                                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                                            <span
+                                                                                class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                                                                {{ $ban->port }}
+                                                                            </span>
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{ $ban->nbr_bans }}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            {{ Carbon\Carbon::createFromTimestamp($ban->last_ban)->diffForHumans() }}
+                                                                        </td>
+                                                                        <td
+                                                                            class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                                            <div class="flex justify-between">
+                                                                                <a href="{{ route('bans.blacklist', ['id' => $ban->id]) }}"
+                                                                                    class="text-indigo-600 hover:text-indigo-900">{{ __('Blacklist') }}</a>
+                                                                                <a href="{{ route('bans.show', ['id' => $ban->id]) }}"
+                                                                                    class="text-indigo-600 hover:text-indigo-900">{{ __('Show details') }}</a>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
@@ -341,13 +299,12 @@
                             </main>
                         </div>
                     </div>
-
                 </div>
 
-                <script src="{{ asset('/js/dropdown.js') }}" />
+                <script src="{{ asset('/js/dropdown.js') }}"></script>
+                <script src="{{ asset('/js/notification.js') }}"></script>
             </div>
         </div>
-    </div>
     </div>
 
 </x-app-layout>

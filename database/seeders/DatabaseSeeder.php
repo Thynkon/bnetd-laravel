@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
-            ConnectionLogSeeder::class,
+            BanSeeder::class,
             NicProtocolTrafficSeeder::class,
             NicGlobalTrafficSeeder::class,
         ]);

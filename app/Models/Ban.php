@@ -7,29 +7,33 @@ use Jenssegers\Mongodb\Eloquent\Model;
 use App\Helpers\SortType;
 use Carbon\Carbon;
 
-class ConnectionLog extends Model
+class Ban extends Model
 {
     use HasFactory;
 
-    protected $table = "connection_logs";
+    protected $table = "bans";
     public $timestamps = false;
-    protected $visible = ['ip', 'port', 'jail'];
+    protected $visible = ['ip', 'country', 'port', 'jail'];
     protected $hidden = '_id';
 
-    private static $query = [[
-        '$group' => [
-            '_id' => ['ip' => '$ip', 'jail' => '$jail', 'port' => '$port'],
-            // this is the only way to tell mongodb to also fetch other fields that are not in the query
-            // otherwise, aggregate will return 
-            // "_id" => MongoDB\Model\BSONDocument {#1508 ▶}
-            // "last_ban" => 1622274199
-            // "nbr_bans" => 1
-            'ip'  => ['$first' => '$ip'],
-            'jail'  => ['$first' => '$jail'],
-            'port'  => ['$first' => '$port'],
-            'last_ban'  => ['$max' => '$ts'],
-            'nbr_bans'  => ['$sum' => 1],
-        ]],
+    private static $query = [
+        [
+            '$group' => [
+                '_id' => ['ip' => '$ip', 'jail' => '$jail', 'port' => '$port'],
+                // this is the only way to tell mongodb to also fetch other fields that are not in the query
+                // otherwise, aggregate will return 
+                // "_id" => MongoDB\Model\BSONDocument {#1508 ▶}
+                // "last_ban" => 1622274199
+                // "nbr_bans" => 1
+                'id' => ['$first' => '$_id'],
+                'ip' => ['$first' => '$ip'],
+                'country' => ['$first' => '$country'],
+                'jail' => ['$first' => '$jail'],
+                'port' => ['$first' => '$port'],
+                'last_ban' => ['$max' => '$ts'],
+                'nbr_bans' => ['$sum' => 1],
+            ]
+        ],
     ];
 
 
@@ -48,7 +52,7 @@ class ConnectionLog extends Model
 
     public static function byJail(string $jail)
     {
-        return ConnectionLog::where('jail', $jail);
+        return Ban::where('jail', $jail);
     }
 
     public static function statsList()
@@ -58,7 +62,7 @@ class ConnectionLog extends Model
 
     private static function fetch(array $query)
     {
-        return ConnectionLog::raw(function ($collection) use ($query) {
+        return Ban::raw(function ($collection) use ($query) {
             return $collection->aggregate($query);
         });
     }
@@ -72,6 +76,11 @@ class ConnectionLog extends Model
         };
 
         return self::statsList()->$function($filter);
+    }
+
+    public static function orderByLastBan()
+    {
+        return static::sortStatsList('last_ban', SortType::DESC);
     }
 
     public static function filterStatsList(array $filters)
@@ -97,10 +106,9 @@ class ConnectionLog extends Model
             ];
         }
 
-        // does not work for now
         if (array_key_exists('ban', $filters)) {
-            $match['ts'] = [
-                '$gt' => ['ts' =>Carbon::now()->subDays($filters['ban'][0])->getTimestamp()],
+            $match['last_ban'] = [
+                '$gt' => Carbon::now()->subDays($filters['ban'][0])->getTimestamp(),
             ];
         }
 
@@ -108,7 +116,15 @@ class ConnectionLog extends Model
             '$match' => $match
         ];
 
+
         $result = self::fetch($query);
         return $result;
+    }
+
+    public static function showStats(Ban $ban)
+    {
+        return Ban::where('jail', $ban->jail)
+            ->where('port', $ban->port)
+            ->where('ip', $ban->ip);
     }
 }
