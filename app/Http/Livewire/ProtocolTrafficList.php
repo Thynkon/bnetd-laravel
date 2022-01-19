@@ -4,18 +4,21 @@ namespace App\Http\Livewire;
 
 use App\Models\NicProtocolTraffic;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ProtocolTrafficList extends Component
 {
-    public $protocols;
-    
+    use WithPagination;
+
+    private $protocols;
+
     public function mount()
     {
-        $this->protocols = NicProtocolTraffic::today()->orderByDesc()->get();
     }
 
     public function render()
     {
-        return view('livewire.protocol.protocol-traffic-list');
+        $this->protocols = NicProtocolTraffic::today()->orderByDesc()->paginate(10);
+        return view('livewire.protocol.protocol-traffic-list')->with('protocols', $this->protocols);
     }
 }
