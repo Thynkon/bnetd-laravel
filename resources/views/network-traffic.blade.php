@@ -9,5 +9,8 @@
         <div class="py-8">
             <livewire:network-traffics />
         </div>
+
+        <a href="{{ route('network-protocol') }}"
+            class="w-full px-4 py-2 bg-indigo-400 hover:bg-indigo-500 rounded text-sm text-white">Show details</a>
     </div>
 </x-app-layout>

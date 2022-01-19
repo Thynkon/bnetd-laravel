@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\NetworkTrafficController;
+use App\Http\Controllers\NetworkProtocolController;
 use App\Http\Controllers\BanController;
 use Illuminate\Support\Facades\Route;
 use App\Helpers\SortType;
@@ -22,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/network-traffic', [NetworkTrafficController::class, 'index'])->name('network-traffic');
+    Route::get('/network-protocol', [NetworkProtocolController::class, 'index'])->name('network-protocol');
 
     Route::get('/bans', [BanController::class, 'index'])->name('bans.index');
     Route::get('/ban/{id}', [BanController::class, 'show'])->name('bans.show');
