@@ -65,7 +65,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
     <li><a href="#hacking-on-the-project">Hacking on the project</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#documentation">Documentation</a></li>
@@ -80,8 +79,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
 `github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
@@ -90,7 +87,10 @@ Here's a blank template to get started:
 ### Built With
 
 * [PHP 8.0](https://www.php.net/releases/8.0/en.php)
-* [Mariadb 10.6.4](https://mariadb.com/kb/en/mariadb-1064-release-notes/)
+* [Laravel 8](https://laravel.com/docs/8.x/installation)
+* [Laravel-mongodb 3.8.4](https://github.com/jenssegers/laravel-mongodb)
+* [Livewire 2.8.2](https://laravel-livewire.com/)
+* [MongoDB 5.2.0](https://www.mongodb.com/)
 * [Composer 2.1.11](https://getcomposer.org/download/)
 
 
@@ -135,10 +135,17 @@ db.createUser(
    ```sh
    git clone https://github.com/Thynkon/bnetd.git
    ```
+
 2. Install php packages
    ```sh
    cd bnetd
    composer install
+   ```
+
+3. Generate application key and add it in `.env``
+   ```sh
+   php artisan key:generate
+   cp .env.example .env
    ```
 
 3. Install npm dependencies
@@ -168,13 +175,6 @@ db.createUser(
    ```sh
    php artisan migrate:fresh --seed
    ```
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
 
 ## Hacking on the project
 ### Tests
@@ -214,7 +214,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+- [Thynkon](https://github.com/Thynkon)
+- [Penfu](https://github.com/Penfu)
+- [Delgadono](https://github.com/Delgadono)
 
 Project Link: [https://github.com/Thynkon/bnetd](https://github.com/Thynkon/bnetd)
 
