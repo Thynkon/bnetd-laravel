@@ -6,6 +6,8 @@ use App\Models\Ban;
 use App\Models\Jail;
 use App\Helpers\SortType;
 use App\Http\Requests\BanFilterRequest;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Storage;
 
 class BanController extends Controller
 {
@@ -45,8 +47,8 @@ class BanController extends Controller
         return view('bans.show')->with('bans', $bans)->with('jail', $ban->jail);
     }
 
-    public function blacklist (string $id)
+    public function blacklist(string $id, string $jail)
     {
-        dd($id);
+        return (exec('fail2ban-blacklist -il' . $id . ' -j ' . $jail));
     }
 }
