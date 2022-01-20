@@ -3,7 +3,7 @@
         <button type="button"
             class="py-3 bg-white w-full flex items-center justify-between text-sm text-gray-400 hover:text-gray-500"
             aria-controls="filter-section-2" aria-expanded="false">
-            <span class="font-medium text-gray-900">{{ $title }}</span>
+            <span class="font-medium text-gray-900">{{ $filter['name'] }}</span>
             <span class="ml-6 flex items-center">
                 <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                     aria-hidden="true">
@@ -20,17 +20,17 @@
     </h3>
     <div class="pt-6 filter-dropdown">
         <div class="space-y-4">
-            @foreach ($options as $option)
+            @foreach ($filter['options'] as $option)
                 <div class="flex items-center">
-                    <input id="{{ $option }}" name="{{ $name }}[]" value="{{ $option }}"
-                        type="checkbox" class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
-                        @if (session()->has("filter.{$name}") && in_array($option, session()->get("filter.{$name}")))
-                    checked="checked"
-            @endif
-            >
-            <label for="{{ $option }}" class="w-full ml-3 text-sm text-gray-600">{{ $option }}</label>
+                    <input wire:click="filter('{{ $option }}')" id="{{ $option }}" name="{{ $option }}"
+                        value="{{ $option }}" type="checkbox"
+                        class="h-4 w-4 border-gray-300 rounded text-indigo-600 focus:ring-indigo-500"
+                        {{ $value == $option ? 'checked' : null }}>
+                    <label for="{{ $option }}" class="w-full ml-3 text-sm text-gray-600">
+                        {{ $option }}
+                    </label>
+                </div>
+            @endforeach
         </div>
-        @endforeach
     </div>
-</div>
 </div>

@@ -42,13 +42,8 @@
                         </div>
 
                         <section aria-labelledby="products-heading" class="pt-6 pb-24">
-                            <div class="grid grid-cols-1 lg:grid-cols-4 gap-x-8 gap-y-10">
-                                <!-- Filters -->
-                                <livewire:protocol-traffic-filter />
-
-                                <!-- List -->
-                                <livewire:protocol-traffic-list />
-                            </div>
+                            <!-- Table -->
+                            <livewire:protocol-traffic-list />
                         </section>
                     </div>
                 </div>

@@ -3,5 +3,6 @@
     "/js/formatBytes.js": "/js/formatBytes.js",
     "/js/custom_chart.js": "/js/custom_chart.js",
     "/js/dropdown.js": "/js/dropdown.js",
+    "/js/notification.js": "/js/notification.js",
     "/css/app.css": "/css/app.css"
 }
