@@ -80,8 +80,6 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
 Here's a blank template to get started:
 **To avoid retyping too much info. Do a search and replace with your text editor for the following:**
 `github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
@@ -90,7 +88,10 @@ Here's a blank template to get started:
 ### Built With
 
 * [PHP 8.0](https://www.php.net/releases/8.0/en.php)
-* [Mariadb 10.6.4](https://mariadb.com/kb/en/mariadb-1064-release-notes/)
+* [Laravel 8](https://laravel.com/docs/8.x/installation)
+* [Laravel-mongodb 3.8.4](https://github.com/jenssegers/laravel-mongodb)
+* [Livewire 2.8.2](https://laravel-livewire.com/)
+* [MongoDB 5.2.0](https://www.mongodb.com/)
 * [Composer 2.1.11](https://getcomposer.org/download/)
 
 
@@ -214,7 +215,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+- [Thynkon](https://github.com/Thynkon)
+- [Penfu](https://github.com/Penfu)
+- [Delgadono](https://github.com/Delgadono)
 
 Project Link: [https://github.com/Thynkon/bnetd](https://github.com/Thynkon/bnetd)
 
