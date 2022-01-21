@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/bans', [BanController::class, 'index'])->name('bans.index');
     Route::get('/ban/{id}', [BanController::class, 'show'])->name('bans.show');
-    Route::get('/ban/{id}/{jail}/blacklist', [BanController::class, 'blacklist'])->name('bans.blacklist');
+    Route::get('/ban/{id}/blacklist', [BanController::class, 'blacklist'])->name('bans.blacklist');
     Route::get('/bans/sort/{param}/{type?}', function (string $param, ?string $type = 'asc') {
         $t = 0;
         switch ($type) {
