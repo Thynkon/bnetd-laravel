@@ -125,7 +125,8 @@
                                     @include('flash-message')
                                 </div>
 
-                                <div class="relative z-10 flex items-baseline pt-4 sm:pt-6 lg:pt-8 pb-6 border-b border-gray-200">
+                                <div
+                                    class="relative z-10 flex items-baseline pt-4 sm:pt-6 lg:pt-8 pb-6 border-b border-gray-200">
                                     <a href="{{ url()->previous() }}"
                                         class="px-3 py-1 bg-gray-800 hover:bg-gray-900 rounded text-sm text-gray-50">
                                         Back
@@ -148,7 +149,7 @@
                                                 </button>
                                                 <div class="bg-green-100 text-green-800 p-2 rounded">
                                                     @if (session()->has('sort'))
-                                                        {{session()->get('sort')}}
+                                                        {{ session()->get('sort') }}
                                                     @else
                                                         {{ __('None') }}
                                                     @endif
@@ -212,7 +213,8 @@
 
                                             <x-filter title="Jails" name="jail" :options="$options['jails']" />
                                             <x-filter title="Port" name="port" :options="$options['ports']" />
-                                            <x-filter title="Last ban (in days)" name="ban" :options="$options['bans']" />
+                                            <x-filter title="Last ban (in days)" name="ban"
+                                                :options="$options['bans']" />
                                             <x-filter title="Country" name="country" :options="$options['countries']" />
                                             @csrf
 

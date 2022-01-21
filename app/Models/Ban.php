@@ -161,4 +161,14 @@ class Ban extends Model
             );
         });
     }
+
+    public function blacklist()
+    {
+        $retval = 0;
+        $output = null;
+
+        exec("fail2ban-blacklist -i {$this->ip}  -j {$this->jail}", $output, $retval);
+
+        return $retval === 0;
+    }
 }
