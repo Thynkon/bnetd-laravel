@@ -10,10 +10,15 @@ class ProtocolTrafficList extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['sort', 'filter'];
+    protected $listeners = ['sort', 'resetSort', 'filter'];
 
     private $protocols;
     private $sort;
+
+    public function resetSort()
+    {
+        $this->sort = null;
+    }
 
     public function sort($attribute)
     {
