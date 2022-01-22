@@ -32,10 +32,10 @@ class ProtocolTrafficList extends Component
             NicProtocolTraffic::orderByDateDesc();
 
         $protocols
-            ->filterByCountry($this->filters['CONT']        ?? null)
-            ->filterByPort($this->filters['PORT']           ?? null)
-            ->filterByNetworkTraffic($this->filters['NETT'] ?? null)
-            ->filterByDate($this->filters['DATE']           ?? null);
+            ->filterByCountry($this->filters['CONT']        ?? [])
+            ->filterByPort($this->filters['PORT']           ?? [])
+            ->filterByNetworkTraffic($this->filters['NETT'] ?? [])
+            ->filterByDate($this->filters['DATE']           ?? []);
 
         return view('livewire.protocol.protocol-traffic-list', [
             'countries' => $protocols->pluck('country')->unique(),
