@@ -13,17 +13,17 @@
                 class="w-full block px-4 py-2 hover:bg-gray-100 text-left text-sm font-medium text-gray-800">
                 Country
             </button>
-            <button wire:click="sort('port')"
-                class="w-full block px-4 py-2 hover:bg-gray-100 text-left text-sm font-medium text-gray-800">
-                Port
-            </button>
-            <button wire:click="sort('pkt_len')"
-                class="w-full block px-4 py-2 hover:bg-gray-100 text-left text-sm font-medium text-gray-800">
-                Packet Lenght
-            </button>
             <button wire:click="sort('ts')"
                 class="w-full block px-4 py-2 hover:bg-gray-100 text-left text-sm font-medium text-gray-800">
                 Date
+            </button>
+            <button wire:click="sort('pkt_len')"
+                class="w-full block px-4 py-2 hover:bg-gray-100 text-left text-sm font-medium text-gray-800">
+                Packet Length
+            </button>
+            <button wire:click="sort('port')"
+                class="w-full block px-4 py-2 hover:bg-gray-100 text-left text-sm font-medium text-gray-800">
+                Port
             </button>
         </div>
     </div>
