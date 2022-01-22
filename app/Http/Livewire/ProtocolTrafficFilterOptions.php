@@ -7,8 +7,6 @@ use Livewire\Component;
 
 class ProtocolTrafficFilterOptions extends Component
 {
-    protected $listeners = ['allFilters'];
-
     public $filter;
     public Collection $activeOptions;
 
@@ -26,7 +24,7 @@ class ProtocolTrafficFilterOptions extends Component
             $this->activeOptions->push(is_numeric($value) ? (int)$value : $value);
         }
 
-        $this->emitUp($this->filter['listener'], $this->activeOptions);
+        $this->emitUp('filter', $this->filter['slug'], $this->activeOptions);
     }
 
     public function render()

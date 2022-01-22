@@ -28,16 +28,18 @@ class NicProtocolTraffic extends Model
 
     public function scopeFilterByCountry($query, $countries)
     {
-        return $query->whereIn('country', $countries);
+        return empty($countries) ? $query : $query->whereIn('country', $countries);
     }
 
     public function scopeFilterByPort($query, $ports)
     {
-        return $query->whereIn('port', $ports);
+        return empty($ports) ? $query : $query->whereIn('port', $ports);
     }
 
     public function scopeFilterByNetworkTraffic($query, $networkTraffic)
     {
+        if (empty($networkTraffic)) return $query;
+
         switch (array_pop($networkTraffic)) { // Take the biggest traffic
             case '< 1kb':
                 return $query->where('pkt_len', '<', 1024);
@@ -48,6 +50,8 @@ class NicProtocolTraffic extends Model
 
     public function scopeFilterByDate($query, $date)
     {
+        if (empty($date)) return $query;
+
         switch (array_pop($date)) { // Take the latest date
             case 'Last hour':
                 return $query->where('ts', '>=', Carbon::now()->subHour()->getTimestamp());
