@@ -10,8 +10,7 @@ class ProtocolTrafficSort extends Component
 
     public function resetSort()
     {
-        $this->sort = null;
-        $this->emit('resetSort');
+        $this->sort(null);
     }
 
     public function sort($attribute)

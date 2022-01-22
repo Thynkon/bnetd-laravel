@@ -11,10 +11,10 @@ class ProtocolTrafficFilter extends Component
     public function mount($countries)
     {
         $this->filters = [
-            ['name' => 'country', 'options' => $countries],
-            ['name' => 'port', 'options' => ['22', '80', '443']],
-            ['name' => 'network traffic', 'options' => ['< 1kb', '> 1kb']],
-            ['name' => 'date', 'options' => ['Last hour', 'Today', 'Last 7 days', 'Last 30 days']],
+            ['name' => 'country',         'options' => $countries,                                            'listener' => 'filterByCountry'],
+            ['name' => 'port',            'options' => [22, 80, 443],                                         'listener' => 'filterByPort'],
+            ['name' => 'network traffic', 'options' => ['< 1kb', '> 1kb'],                                    'listener' => 'filterByNetworkTraffic'],
+            ['name' => 'date',            'options' => ['Last hour', 'Today', 'Last 7 days', 'Last 30 days'], 'listener' => 'filterByDate'],
         ];
     }
 

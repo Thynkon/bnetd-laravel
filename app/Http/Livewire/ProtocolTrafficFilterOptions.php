@@ -2,22 +2,31 @@
 
 namespace App\Http\Livewire;
 
+use Illuminate\Support\Collection;
 use Livewire\Component;
 
 class ProtocolTrafficFilterOptions extends Component
 {
+    protected $listeners = ['allFilters'];
+
     public $filter;
-    public $value;
+    public Collection $activeOptions;
+
+    public function mount()
+    {
+        $this->activeOptions = collect();
+    }
 
     public function filter($value)
     {
-        $this->value = ($value == $this->value) ? null : $value;
-        $this->emit('filter', ['attribute' => $this->filter['name'], 'value' => $value]);
-    }
+        if ($this->activeOptions->contains($value)) {
+            $item = $this->activeOptions->search($value);
+            $this->activeOptions->forget($item);
+        } else {
+            $this->activeOptions->push(is_numeric($value) ? (int)$value : $value);
+        }
 
-    public function updatedValue($value)
-    {
-        $this->value = $value;
+        $this->emitUp($this->filter['listener'], $this->activeOptions);
     }
 
     public function render()
