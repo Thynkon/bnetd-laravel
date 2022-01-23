@@ -47,8 +47,6 @@
                         </section>
                     </div>
                 </div>
-
-                <script src="{{ asset('/js/notification.js') }}"></script>
             </div>
         </div>
     </div>
