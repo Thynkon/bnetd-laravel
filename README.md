@@ -79,9 +79,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
+Bnetd is a monitoring web app for my personal VPS. Since I use fail2ban to prevent DDoS attacks on my server, I would like to have some kind of overview of my server's network traffic. Thus, I decided to create this project as well as [bnetd-db](https://github.com/Thynkon/bnetd-db) ruby gem.
 
 
 ### Built With
