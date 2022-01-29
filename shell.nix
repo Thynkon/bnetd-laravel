@@ -1,12 +1,12 @@
 { pkgs ? import <nixpkgs> { }, unstable ? import <nixos-unstable> { } }:
 
 let
-  php' = pkgs.php80.buildEnv {
+  php' = pkgs.php81.buildEnv {
     extraConfig = ''
-      extension=${unstable.php80Extensions.mongodb}/lib/php/extensions/mongodb.so
+      extension=${pkgs.php81Extensions.mongodb}/lib/php/extensions/mongodb.so
       # memory_limit = 2048M
       [xdebug]
-      zend_extension=${pkgs.php80Extensions.xdebug}/lib/php/extensions/xdebug.so
+      zend_extension=${pkgs.php81Extensions.xdebug}/lib/php/extensions/xdebug.so
               xdebug.mode=debug
               xdebug.client_host=127.0.0.1
               xdebug.client_port=9003'';
