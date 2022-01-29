@@ -38,7 +38,7 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('admin')" class="pb-4 pb-1 border-b border-gray-200">
+                        <x-dropdown-link :href="route('admin')" class="pb-4 border-b border-gray-200">
                             {{ __('Admin') }}
                         </x-dropdown-link>
 
