@@ -48,7 +48,7 @@ class Ban extends Model
             ]
         ],
     ];
-
+    
     public static function byJail(string $jail)
     {
         return Ban::where('jail', $jail);
@@ -75,6 +75,16 @@ class Ban extends Model
         };
 
         return self::statsList()->$function($filter);
+    }
+
+    public function scopeSortBy($query, $attribute)
+    {
+        return $query->orderBy($attribute);
+    }
+
+    public function scopeOrderByLastBan($q)
+    {
+        return $q->orderBy('ts', 'desc');
     }
 
     public static function orderByLastBan()

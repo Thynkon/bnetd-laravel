@@ -11,29 +11,7 @@ class BanController extends Controller
 
     public function index()
     {
-        $bans = Ban::orderByLastBan();
-
-        return view('bans.list')->with('bans', $bans);
-    }
-
-    public function sort(string $param, int $type = SortType::ASC)
-    {
-        $bans = Ban::sortStatsList($param, $type);
-        session(['sort' => $param]);
-
-        return view('bans.list')->with('bans', $bans);
-    }
-
-    public function filter(BanFilterRequest $request)
-    {
-        $validated_data = $request->validated();
-
-        // store filter preferences in session
-        session(['filter' => $validated_data]);
-
-        $bans = Ban::filterStatsList($validated_data);
-
-        return view('bans.list')->with('bans', $bans);
+        return view('bans');
     }
 
     public function show(string $id)
@@ -41,7 +19,10 @@ class BanController extends Controller
         $ban = Ban::findOrFail($id);
         $bans = Ban::showStats($ban)->get();
 
-        return view('bans.show')->with('bans', $bans)->with('jail', $ban->jail);
+        return view('ban')->with([
+            'bans' => $bans,
+            'jail' => $ban->jail
+        ]);
     }
 
     public function blacklist(string $id)
