@@ -2,15 +2,33 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Jenssegers\Mongodb\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
+use RatkoR\Crate\Eloquent\Model;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Auth\Authenticatable;
+use Illuminate\Auth\MustVerifyEmail;
 
-class User extends Authenticatable
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Foundation\Auth\Access\Authorizable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
+use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+
+class User extends Model implements
+    AuthenticatableContract,
+    AuthorizableContract,
+    CanResetPasswordContract
 {
     use HasApiTokens, HasFactory, Notifiable;
+    use Authenticatable, Authorizable, CanResetPassword, MustVerifyEmail;
+
+    // Reference: https://stackoverflow.com/a/34715309
+    protected $primaryKey = 'id';
+    public $incrementing = false;
+    // In Laravel 6.0+ make sure to also set $keyType
+    protected $keyType = 'string';
 
     /**
      * The attributes that are mass assignable.
@@ -50,4 +68,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $dates = ['email_verified_at'];
+
+    public static function generateUUID()
+    {
+        return Str::uuid()->toString();
+    }
 }
