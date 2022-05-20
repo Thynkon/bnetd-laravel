@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'crate'),
 
     /*
     |--------------------------------------------------------------------------
@@ -48,6 +48,12 @@ return [
                 'database' => env('DB_AUTHENTICATION_DATABASE', ''), // required with Mongo 3+
             ],
         ],
+        'crate' => array(
+            'driver'   => 'crate',
+            'host'     => env('DB_HOST', 'localhost'),
+            'database' => env('DB_DATABASE', 'doc'),
+            'port'     => env('DB_PORT', 4200),
+        ),
     ],
 
     /*
